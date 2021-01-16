@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3651832493284961387}
   - component: {fileID: 3651832493284961386}
   - component: {fileID: 3651832493284961385}
+  - component: {fileID: -2907157595341971298}
   m_Layer: 0
   m_Name: PersonSprite
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3651832493284961384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: 0.28, z: -0.84765625}
+  m_LocalPosition: {x: -3.819, y: 0.12, z: -0.84765625}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,3 +95,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd82cac16c408647bc6dca0da54a761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  radius: 0
+--- !u!58 &-2907157595341971298
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651832493284961384}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1

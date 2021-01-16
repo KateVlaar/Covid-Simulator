@@ -43,4 +43,12 @@ public class Person : MonoBehaviour
                 );
         }
     }
+
+    public void Infection(double chance) 
+    {
+        if(Random.Range(0f, 1f) < chance) {
+            this.gameObject.AddComponent<Infected>();
+            Destroy(this);
+        }
+    }
 }

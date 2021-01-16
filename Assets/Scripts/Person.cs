@@ -9,6 +9,9 @@ public class Person : MonoBehaviour
     private bool isWearingMask = false;
     private bool isVaccinated = false;
 
+    public Rigidbody2D rb;
+    public float radius = .0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +31,16 @@ public class Person : MonoBehaviour
         this.transform.position = new Vector3(Random.Range(boundX, boundX), Random.Range(boundY, boundY),
             this.transform.position.z);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(
+                Random.Range(-1 * radius, radius),
+                Random.Range(-1 * radius, radius)
+                );
+        }
     }
 }

@@ -11,20 +11,8 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < numberOfPeople; i++)
         {
-            Instantiate(obj, setStartingPosition(), Quaternion.identity);
+            Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
-    }
-
-    private Vector3 setStartingPosition()
-    {
-        Camera cam = Camera.main;
-        float height = cam.orthographicSize;
-        float width = height * cam.aspect / 2.0f;
-
-        return new Vector3(
-                Random.Range(-height, height),
-                Random.Range(-width, width),
-                0f);
     }
 
     // Update is called once per frame

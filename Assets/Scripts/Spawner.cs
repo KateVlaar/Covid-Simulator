@@ -22,8 +22,8 @@ public class Spawner : MonoBehaviour
         float width = height * cam.aspect / 2.0f;
 
         return new Vector3(
-                Random.Range(-1 * height, height),
-                Random.Range(-1 * width, width),
+                Random.Range(-height, height),
+                Random.Range(-width, width),
                 0f);
     }
 

@@ -11,13 +11,32 @@ public class Person : MonoBehaviour
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
 
+    private SpriteRenderer spriteRenderer = null;
+    private float boundX = 0.0f;
+    private float boundY = 0.0f;
+
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        setBoundaries();
         setStartingPosition();
         chooseNewRandomDelay();
+    }
+
+    /**
+     * Calculates the boundaries which the player can move within
+     */
+    private void setBoundaries()
+    {
+        Camera cam = Camera.main;
+        float cameraHeight = 2f * cam.orthographicSize;
+        float cameraWidth = cameraHeight * cam.aspect;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boundY = cameraHeight / 2 - spriteRenderer.bounds.extents.y;
+        boundX = cameraWidth / 2 - spriteRenderer.bounds.extents.x;
     }
 
     /**
@@ -25,14 +44,6 @@ public class Person : MonoBehaviour
      */
     private void setStartingPosition()
     {
-        Camera cam = Camera.main;
-        float height = 2f * cam.orthographicSize;
-        float width = height * cam.aspect;
-
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        float boundX = width / 2 - spriteRenderer.bounds.extents.x;
-        float boundY = height / 2 - spriteRenderer.bounds.extents.y;
-
         this.transform.position = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY),
             this.transform.position.z);
     }
@@ -48,6 +59,7 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* Update the velocity if necessary */
         this.velocityChangeTime -= Time.deltaTime;
         if (this.velocityChangeTime <= 0.0f)
         {

@@ -17,13 +17,20 @@ public class Person : MonoBehaviour
 
     private void setStartingPosition()
     {
-        this.transform.position = new Vector3(Random.Range(0, Screen.width), this.transform.position.y,
-            Random.Range(0, Screen.height));
+        Camera cam = Camera.main;
+        float height = 2f * cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        float boundX = width / 2 - spriteRenderer.bounds.extents.x;
+        float boundY = height / 2 - spriteRenderer.bounds.extents.y;
+
+        this.transform.position = new Vector3(Random.Range(boundX, boundX), Random.Range(boundY, boundY),
+            this.transform.position.z);
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

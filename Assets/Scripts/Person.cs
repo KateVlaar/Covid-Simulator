@@ -28,7 +28,7 @@ public class Person : MonoBehaviour
         float boundX = width / 2 - spriteRenderer.bounds.extents.x;
         float boundY = height / 2 - spriteRenderer.bounds.extents.y;
 
-        this.transform.position = new Vector3(Random.Range(boundX, boundX), Random.Range(boundY, boundY),
+        this.transform.position = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY),
             this.transform.position.z);
     }
     

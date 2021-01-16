@@ -15,7 +15,7 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setStartingPosition();
+        // setStartingPosition();
     }
 
     private void setStartingPosition()
@@ -31,7 +31,6 @@ public class Person : MonoBehaviour
         this.transform.position = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY),
             this.transform.position.z);
     }
-    
     // Update is called once per frame
     void Update()
     {

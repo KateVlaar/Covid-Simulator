@@ -55,7 +55,7 @@ public class Person : MonoBehaviour
     {
         this.velocityChangeTime = Random.Range(0.5f, 5.0f);
     }
-    
+
     // Update is called once per frame
     void Update()
     {

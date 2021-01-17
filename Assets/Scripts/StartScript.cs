@@ -27,12 +27,8 @@ public class StartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TODO:
-        // - Hookup wearing masks
-        // - Hookup infection radius
-        // - Hookup infection chance
-        // - hookup recovery time
-        
+        // TODO: Hookup wearing masks
+
         /* Setup all slider listeners and initialize the value to the slider's starting value */
         Slider susceptibleSlider = GameObject.Find("SusceptibleSlider").GetComponent<Slider>();
         susceptibleSlider.onValueChanged.AddListener(updateNumSusceptible);

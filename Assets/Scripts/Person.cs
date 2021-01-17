@@ -132,7 +132,7 @@ public class Person : MonoBehaviour
             obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
             obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
             obj.gameObject.SendMessage("setRecoveryTime", inf.fullRecoveryTime);
-            obj.gameObject.SendMessage("setOldPos", inf.fullRecoveryTime);
+            //obj.gameObject.SendMessage("setOldPos", inf.fullRecoveryTime);
             Destroy(this.gameObject);
         }
     }

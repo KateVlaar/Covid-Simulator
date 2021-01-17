@@ -40,7 +40,7 @@ public class Recovered : Person
         this.enterHubTime = i;
     }
 
-    public void setInHub(double i)
+    public void setInHubTimer(double i)
     {
         this.timeInHub = i;
     }

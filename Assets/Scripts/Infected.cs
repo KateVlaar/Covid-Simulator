@@ -113,7 +113,7 @@ public float fullRecoveryTime = 30.0f;
         this.enterHubTime = i;
     }
 
-    public void setInHub(double i)
+    public void setInHubTimer(double i)
     {
         this.timeInHub = i;
     }

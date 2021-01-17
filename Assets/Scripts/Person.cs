@@ -79,7 +79,7 @@ public class Person : MonoBehaviour
                 GameObject hub = GameObject.Find("Hub");
                 Vector3 pos = hub.GetComponent<SpriteRenderer>().transform.position;
                 rb.velocity = Vector3.Normalize(pos - this.transform.position);
-                if(Vector3.Distance(pos, this.transform.position) < 1) {
+                if(Vector3.Distance(pos, this.transform.position) < 1.7) {
                     this.inHub = true;
                     this.inTransit = false;
                     rb.velocity = new Vector3();

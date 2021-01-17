@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3532786865566215031}
   - component: {fileID: 3532786865566215030}
-  - component: {fileID: 6056395042637473666}
   - component: {fileID: 264323291171370072}
   - component: {fileID: 264323291171370079}
+  - component: {fileID: 4607186071618518978}
   - component: {fileID: 5381269059444296793}
   m_Layer: 0
   m_Name: InfectedSprite
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6056395042637473666
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3532786865566215028}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &264323291171370072
 Rigidbody2D:
   serializedVersion: 4
@@ -136,9 +120,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infected: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd, type: 3}
   rb: {fileID: 264323291171370072}
-  recoveryTime: 10
+  infectionRadius: 1
+  infectionChance: 0.5
+  infTimer: 0.5
+  recoveryTime: 14
   recovered: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd,
     type: 3}
+--- !u!58 &4607186071618518978
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3532786865566215028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!58 &5381269059444296793
 CircleCollider2D:
   m_ObjectHideFlags: 0

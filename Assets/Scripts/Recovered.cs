@@ -15,7 +15,6 @@ public class Recovered : Person
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color
         m_SpriteRenderer.color = Color.gray;
-        filter.NoFilter();
     }
 
     // Update is called once per frame

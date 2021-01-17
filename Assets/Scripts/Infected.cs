@@ -9,6 +9,9 @@ public class Infected : Person
     private double infectionChance = 1;
     /* Flags if we can infect or not */
     private bool canInfect = false;
+	
+	/* How often we check for infections in s */
+	public double infTimer = 0.5;
 
     public float recoveryTime = 30.0f;
     public GameObject recovered;
@@ -32,20 +35,25 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
-        base.Update();
+        this.infTimer -= Time.deltaTime;
+		base.Update();
         
         /**
          * Only try to infect and tick down to recovery once canInfect is set
          */
         if (this.canInfect)
         {
-            this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
-            foreach(Collider2D person in inProximity)
-            {
-                person.gameObject.SendMessage("Infection", infectionChance);
-            }
+			if(infTimer < 0)
+			{
+				this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
+	            foreach(Collider2D person in inProximity)
+	            {
+	                person.gameObject.SendMessage("Infection", infectionChance);
+	            }
+				infTimer = 0.5;
+			}
 
-            recoveryTime -= Time.deltaTime;
+        	recoveryTime -= Time.deltaTime;
             if (recoveryTime < 0)
             {
                 GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);
@@ -68,5 +76,5 @@ public class Infected : Person
         base.Start();
     }
 
-    public void Infection(double chance) {}
+    public void Infection(Infected inf) {}
 }

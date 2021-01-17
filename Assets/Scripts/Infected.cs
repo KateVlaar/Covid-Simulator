@@ -6,7 +6,7 @@ public class Infected : Person
 {
     private double infectionRadius = 10.0;
     /* Chance out of 0.5 that a susceptible person inside of the infection radius will be infected on each tick */
-    private double infectionChance = 1;
+    public double infectionChance = 1;
     /* Flags if we can infect or not */
     private bool canInfect = false;
 	
@@ -35,20 +35,20 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
-        this.infTimer -= Time.deltaTime;
-		base.Update();
+	    base.Update();
         
         /**
          * Only try to infect and tick down to recovery once canInfect is set
          */
         if (this.canInfect)
         {
+	        this.infTimer -= Time.deltaTime;
 			if(infTimer < 0)
 			{
 				this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
 	            foreach(Collider2D person in inProximity)
 	            {
-	                person.gameObject.SendMessage("Infection", infectionChance);
+	                person.gameObject.SendMessage("Infection", this);
 	            }
 				infTimer = 0.5;
 			}

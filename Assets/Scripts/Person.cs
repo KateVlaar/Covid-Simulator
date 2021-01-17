@@ -10,8 +10,9 @@ public class Person : MonoBehaviour
     private bool isWearingMask = false;
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
+
     private double enterHubTime = 2.0f;
-    private double timeInHub = 2.0f;
+    private double timeInHub = 3.0f;
     private Boolean inHub = false;
     private Vector3 originalPosition;
 
@@ -79,21 +80,21 @@ public class Person : MonoBehaviour
 
     public void enterHub()
     {
-/*        Debug.Log(gameObject.Find("Hub"));
-        GameObject hub = gameObject.Find("Hub");*/
+        GameObject hub = GameObject.Find("Hub1"); // Will need this for each hub
+
+        float prob = Random.Range(0.0f, 1.0f);
 
         if (inHub)
         {
             this.timeInHub -= Time.deltaTime;
             if (this.timeInHub <= 0.0f)
             {
-                float prob = Random.Range(0.0f, 1.0f);
-                if (prob <= 1.0f)
+                if (prob <= 1.0f) // Guarantees they leave the hub - subject to change
                 {
                     this.transform.position = this.originalPosition;
                     this.inHub = false;
                 }
-                this.timeInHub = 2.0f;
+                this.timeInHub = 3.0f;
             }
         } 
         else
@@ -101,13 +102,16 @@ public class Person : MonoBehaviour
             this.enterHubTime -= Time.deltaTime;
             if (this.enterHubTime <= 0.0f)
             {
-
                 this.originalPosition = this.transform.position;
-                float prob = Random.Range(0.0f, 1.0f);
-                if (prob <= 0.2f)
+                if (prob <= 0.2f) // Probability they enter the hub - pretty high for testing
                 {
-                    // TODO: use real hub coordinates
-                    this.transform.position = new Vector3(0, 0);
+                    SpriteRenderer hubSpriteRenderer = hub.GetComponent<SpriteRenderer>();
+                    float x = hubSpriteRenderer.bounds.extents.x;
+                    float y = hubSpriteRenderer.bounds.extents.y;
+                    Vector3 pos = hubSpriteRenderer.transform.position;
+
+                    /* Spawns sprites within the hub */
+                    this.transform.position = new Vector3(Random.Range(pos.x-x, pos.x+x), Random.Range(pos.y - y, pos.y + y));
                     this.inHub = true;
                 }
                 this.enterHubTime = 2.0f;

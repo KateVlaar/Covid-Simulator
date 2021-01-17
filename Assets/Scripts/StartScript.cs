@@ -52,7 +52,7 @@ public class StartScript : MonoBehaviour
         // TODO: Visualize this :)
         Slider infectionRadius = GameObject.Find("InfectionRadiusSlider").GetComponent<Slider>();
         infectionRadius.onValueChanged.AddListener(updateInfectionRadius);
-        updateInfectionRadius(percentWearingMasks.value);
+        updateInfectionRadius(infectionRadius.value);
         
         /* Setup all slider listeners and initialize the value to the slider's starting value */
         Slider infectionChance = GameObject.Find("InfectionChanceSlider").GetComponent<Slider>();

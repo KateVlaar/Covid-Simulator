@@ -70,4 +70,12 @@ public class Person : MonoBehaviour
             this.chooseNewRandomDelay();
         }
     }
+
+    public void Infection(double chance) 
+    {
+        if(Random.Range(0f, 1f) < chance) {
+            this.gameObject.AddComponent<Infected>();
+            Destroy(this);
+        }
+    }
 }

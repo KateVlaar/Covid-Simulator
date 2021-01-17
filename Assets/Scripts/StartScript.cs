@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartScript : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class StartScript : MonoBehaviour
             spawned = true;
             spawnSusceptible();
             spawnInfected();
+            /* Hide the starting text */
+            GameObject.Find("StartText").SetActive(false);
         }
     }
 }

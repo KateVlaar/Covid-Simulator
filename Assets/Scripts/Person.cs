@@ -50,7 +50,7 @@ public class Person : MonoBehaviour
      */
     private void setStartingPosition()
     {
-        this.transform.position = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY),
+        this.transform.position = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY - 0.8f),
             this.transform.position.z);
     }
 
@@ -79,7 +79,7 @@ public class Person : MonoBehaviour
                 GameObject hub = GameObject.Find("Hub");
                 Vector3 pos = hub.GetComponent<SpriteRenderer>().transform.position;
                 rb.velocity = Vector3.Normalize(pos - this.transform.position);
-                if(Vector3.Distance(pos, this.transform.position) < 2) {
+                if(Vector3.Distance(pos, this.transform.position) < 1) {
                     this.inHub = true;
                     this.inTransit = false;
                     rb.velocity = new Vector3();

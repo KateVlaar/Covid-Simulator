@@ -23,5 +23,5 @@ public class Recovered : Person
         base.Update();
     }
 
-    public void Infection(double chance) { }
+    public void Infection(Infected inf) { }
 }

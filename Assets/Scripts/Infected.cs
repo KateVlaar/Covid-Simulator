@@ -12,7 +12,7 @@ public class Infected : Person
 	
 	/* How often we check for infections in s */
 	public double infTimer = 0.5;
-
+public float fullRecoveryTime = 30.0f;
     public float recoveryTime = 30.0f;
     public GameObject recovered;
     
@@ -30,7 +30,7 @@ public class Infected : Person
         //Set the GameObject's Color quickly to a set Color
         m_SpriteRenderer.color = Color.red;
         filter.useLayerMask = true;
-        filter.layerMask = 8;
+        filter.layerMask = LayerMask.GetMask("People");
     }
 
     // Update is called once per frame
@@ -79,7 +79,9 @@ public class Infected : Person
 
     public void setInfectionRadius(float radius)
     {
-	    this.infectionRadius = radius;
+        this.infectionRadius = radius;
+	    this.GetComponent<CircleCollider2D>().radius = radius;
+        this.GetComponent<Light>().range = radius*2;
     }
 
     public void setInfectionChance(float chance)
@@ -90,6 +92,16 @@ public class Infected : Person
     public void setRecoveryTime(float recoveryTime)
     {
 	    this.recoveryTime = recoveryTime;
+    }
+
+    public void setOldPos(Vector3 pos)
+    {
+	    this.originalPosition = pos;
+    }
+
+    public void setHubStatus(bool inHub)
+    {
+        this.inHub = inHub;
     }
 
     public void Infection(Infected inf) {}

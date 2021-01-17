@@ -13,10 +13,10 @@ public class Person : MonoBehaviour
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
 
-    private double enterHubTime = 2.0f;
-    private double timeInHub = 3.0f;
-    private Boolean inHub = false;
-    private Vector3 originalPosition;
+    protected double enterHubTime = 2.0f;
+    protected double timeInHub = 3.0f;
+    protected Boolean inHub = false;
+    protected Vector3 originalPosition;
 
     private SpriteRenderer spriteRenderer = null;
     private float boundX = 0.0f;
@@ -123,8 +123,7 @@ public class Person : MonoBehaviour
 
     public void Infection(Infected inf) 
     {
-        // Exponentially decaying function wrt distance between the two
-        double distFactor = Math.Pow(20, -Vector3.Distance(this.transform.position, inf.transform.position));
+        double distFactor = Math.Pow(20, -(Vector3.Distance(this.transform.position, inf.transform.position) - 0.2));
         if(Random.Range(0f, 1f) < inf.infectionChance*distFactor) {
             GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
@@ -132,7 +131,8 @@ public class Person : MonoBehaviour
             /* Inherit all attributes from the infector */
             obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
             obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
-            obj.gameObject.SendMessage("setRecoveryTime", inf.recoveryTime);
+            obj.gameObject.SendMessage("setRecoveryTime", inf.fullRecoveryTime);
+            obj.gameObject.SendMessage("setOldPos", inf.fullRecoveryTime);
             Destroy(this.gameObject);
         }
     }

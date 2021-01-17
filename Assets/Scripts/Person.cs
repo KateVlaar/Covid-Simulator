@@ -20,7 +20,7 @@ public class Person : MonoBehaviour
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         setBoundaries();
         setStartingPosition();
@@ -59,7 +59,7 @@ public class Person : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    protected void Update()
     {
         /* Update the velocity if necessary */
         this.velocityChangeTime -= Time.deltaTime;
@@ -79,7 +79,11 @@ public class Person : MonoBehaviour
         if(Random.Range(0f, 1f) < inf.infectionChance*distFactor) {
             GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
-            // this.gameObject.AddComponent<Infected>();
+            obj.gameObject.SendMessage("setCanInfect", true);
+            /* Inherit all attributes from the infector */
+            obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
+            obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
+            obj.gameObject.SendMessage("setRecoveryTime", inf.recoveryTime);
             Destroy(this.gameObject);
         }
     }

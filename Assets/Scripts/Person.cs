@@ -10,6 +10,10 @@ public class Person : MonoBehaviour
     private bool isWearingMask = false;
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
+    private double enterHubTime = 2.0f;
+    private double timeInHub = 2.0f;
+    private Boolean inHub = false;
+    private Vector3 originalPosition;
 
     private SpriteRenderer spriteRenderer = null;
     private float boundX = 0.0f;
@@ -69,6 +73,46 @@ public class Person : MonoBehaviour
             );
             this.chooseNewRandomDelay();
         }
+
+        enterHub();
+    }
+
+    public void enterHub()
+    {
+/*        Debug.Log(gameObject.Find("Hub"));
+        GameObject hub = gameObject.Find("Hub");*/
+
+        if (inHub)
+        {
+            this.timeInHub -= Time.deltaTime;
+            if (this.timeInHub <= 0.0f)
+            {
+                float prob = Random.Range(0.0f, 1.0f);
+                if (prob <= 1.0f)
+                {
+                    this.transform.position = this.originalPosition;
+                    this.inHub = false;
+                }
+                this.timeInHub = 2.0f;
+            }
+        } 
+        else
+        {
+            this.enterHubTime -= Time.deltaTime;
+            if (this.enterHubTime <= 0.0f)
+            {
+
+                this.originalPosition = this.transform.position;
+                float prob = Random.Range(0.0f, 1.0f);
+                if (prob <= 0.2f)
+                {
+                    // TODO: use real hub coordinates
+                    this.transform.position = new Vector3(0, 0);
+                    this.inHub = true;
+                }
+                this.enterHubTime = 2.0f;
+            }
+        }
     }
 
     public void Infection(double chance) 
@@ -77,5 +121,12 @@ public class Person : MonoBehaviour
             this.gameObject.AddComponent<Infected>();
             Destroy(this);
         }
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
     }
 }

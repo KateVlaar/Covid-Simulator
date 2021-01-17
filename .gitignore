@@ -61,3 +61,4 @@ crashlytics-build.properties
 # Jetbrains IDE generated files
 *.idea/
 
+Packages/packages-lock.json

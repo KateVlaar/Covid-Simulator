@@ -12,8 +12,9 @@ public class Person : MonoBehaviour
     private double velocityChangeTime = 2.0f;
 
     protected double enterHubTime = 5.0f;
-    protected double timeInHub = 3.0f;
-    protected Boolean inHub = false;
+    protected double timeInHub = 0.5f;
+    public Boolean inHub = false;
+    public Boolean inTransit = false;
     protected Vector3 originalPosition;
 
     private SpriteRenderer spriteRenderer = null;
@@ -64,6 +65,29 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        if(this.inTransit)
+        {
+            if(this.inHub) {
+                rb.velocity = Vector3.Normalize(this.originalPosition - this.transform.position);
+                if(Vector3.Distance(this.originalPosition, this.transform.position) < 0.3) {
+                    this.inHub = false;
+                    this.inTransit = false;
+                    rb.velocity = new Vector3();
+                    this.velocityChangeTime = 0.2;
+                }
+            } else {
+                GameObject hub = GameObject.Find("Hub");
+                Vector3 pos = hub.GetComponent<SpriteRenderer>().transform.position;
+                rb.velocity = Vector3.Normalize(pos - this.transform.position);
+                if(Vector3.Distance(pos, this.transform.position) < 2) {
+                    this.inHub = true;
+                    this.inTransit = false;
+                    rb.velocity = new Vector3();
+                    this.velocityChangeTime = 0.2;
+                }
+            }
+            return;
+        }
         /* Update the velocity if necessary */
         this.velocityChangeTime -= Time.deltaTime;
         if (this.velocityChangeTime <= 0.0f)
@@ -91,10 +115,10 @@ public class Person : MonoBehaviour
             {
                 if (prob <= 1.0f) // Guarantees they leave the hub - subject to change
                 {
-                    this.transform.position = this.originalPosition;
-                    this.inHub = false;
+                    //this.transform.position = this.originalPosition;
+                    this.inTransit = true;
                 }
-                this.timeInHub = 3.0f;
+                this.timeInHub = 0.5f;
             }
         } 
         else
@@ -111,8 +135,9 @@ public class Person : MonoBehaviour
                     Vector3 pos = hubSpriteRenderer.transform.position;
 
                     /* Spawns sprites within the hub */
-                    this.transform.position = new Vector3(Random.Range(pos.x-x, pos.x+x), Random.Range(pos.y - y, pos.y + y));
-                    this.inHub = true;
+                    //this.transform.position = new Vector3(Random.Range(pos.x-x, pos.x+x), Random.Range(pos.y - y, pos.y + y));
+                    //this.inHub = true;
+                    this.inTransit = true;
                 }
                 this.enterHubTime = 5.0f;
             }
@@ -134,6 +159,7 @@ public class Person : MonoBehaviour
             obj.gameObject.SendMessage("setHub", this.inHub);
             obj.gameObject.SendMessage("setOutHubTimer", this.enterHubTime);
             obj.gameObject.SendMessage("setInHubTimer", this.timeInHub);
+            obj.gameObject.SendMessage("setInTransit", this.inTransit);
             Destroy(this.gameObject);
         }
     }

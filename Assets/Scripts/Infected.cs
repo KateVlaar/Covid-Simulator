@@ -94,5 +94,15 @@ public float fullRecoveryTime = 30.0f;
 	    this.recoveryTime = recoveryTime;
     }
 
+    public void setOldPos(Vector3 pos)
+    {
+	    this.originalPosition = pos;
+    }
+
+    public void setHubStatus(bool inHub)
+    {
+        this.inHub = inHub;
+    }
+
     public void Infection(Infected inf) {}
 }

@@ -13,10 +13,10 @@ public class Person : MonoBehaviour
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
 
-    private double enterHubTime = 2.0f;
-    private double timeInHub = 3.0f;
-    private Boolean inHub = false;
-    private Vector3 originalPosition;
+    protected double enterHubTime = 2.0f;
+    protected double timeInHub = 3.0f;
+    protected Boolean inHub = false;
+    protected Vector3 originalPosition;
 
     private SpriteRenderer spriteRenderer = null;
     private float boundX = 0.0f;
@@ -132,6 +132,7 @@ public class Person : MonoBehaviour
             obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
             obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
             obj.gameObject.SendMessage("setRecoveryTime", inf.fullRecoveryTime);
+            obj.gameObject.SendMessage("setOldPos", inf.fullRecoveryTime);
             Destroy(this.gameObject);
         }
     }

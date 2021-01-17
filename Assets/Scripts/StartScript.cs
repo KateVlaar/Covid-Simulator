@@ -82,6 +82,9 @@ public class StartScript : MonoBehaviour
         {
             infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));
             infectedList[i].gameObject.SendMessage("setStartingPosition");
+            infectedList[i].gameObject.SendMessage("setInfectionRadius", this.infectionRadius);
+            infectedList[i].gameObject.SendMessage("setInfectionChance", this.infectionChance);
+            infectedList[i].gameObject.SendMessage("setRecoveryTime", this.recoveryTime);
         }
 
         return infectedList;

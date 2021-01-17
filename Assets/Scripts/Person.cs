@@ -81,6 +81,10 @@ public class Person : MonoBehaviour
             GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
             obj.gameObject.SendMessage("setCanInfect", true);
+            /* Inherit all attributes from the infector */
+            obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
+            obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
+            obj.gameObject.SendMessage("setRecoveryTime", inf.recoveryTime);
             Destroy(this.gameObject);
         }
     }

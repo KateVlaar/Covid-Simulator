@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Infected : Person
 {
-    private double infectionRadius = 10.0;
+    public double infectionRadius = 10.0;
     /* Chance out of 0.5 that a susceptible person inside of the infection radius will be infected on each tick */
     public double infectionChance = 1;
     /* Flags if we can infect or not */
@@ -74,6 +74,21 @@ public class Infected : Person
     public void setStartingPosition()
     {
         base.Start();
+    }
+
+    public void setInfectionRadius(float radius)
+    {
+	    this.infectionRadius = radius;
+    }
+
+    public void setInfectionChance(float chance)
+    {
+	    this.infectionChance = chance;
+    }
+
+    public void setRecoveryTime(float recoveryTime)
+    {
+	    this.recoveryTime = recoveryTime;
     }
 
     public void Infection(Infected inf) {}

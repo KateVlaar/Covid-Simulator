@@ -13,7 +13,7 @@ public class StartScript : MonoBehaviour
     public int numInfected = 1;
     public int numSusceptible = 10;
     public float percentWearingMasks = 0.0f;
-    public float infectionRadius = 5.0f;
+    public float infectionRadius = 0.5f;
     public float infectionChance = 0.5f;
     private float recoveryTime = 10.0f;
 

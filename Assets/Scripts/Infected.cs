@@ -99,9 +99,19 @@ public float fullRecoveryTime = 30.0f;
 	    this.originalPosition = pos;
     }
 
-    public void setHubStatus(bool inHub)
+    public void setHub(bool inHub)
     {
         this.inHub = inHub;
+    }
+
+    public void setOutHubTimer(double i)
+    {
+        this.enterHubTime = i;
+    }
+
+    public void setHub(double i)
+    {
+        this.timeInHub = i;
     }
 
     public void Infection(Infected inf) {}

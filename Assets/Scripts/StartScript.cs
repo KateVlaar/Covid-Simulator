@@ -78,7 +78,7 @@ public class StartScript : MonoBehaviour
     {
         for (int i = 0; i < numSusceptible; i++)
         {
-            Instantiate(susceptible, new Vector3(0.0f, 0.0f, 2.0f), Quaternion.identity);
+            Instantiate(susceptible, new Vector3(0.0f, 0.0f, 1.0f), Quaternion.identity);
         }
     }
 
@@ -90,7 +90,7 @@ public class StartScript : MonoBehaviour
         List<GameObject> infectedList = new List<GameObject>();
         for (int i = 0; i < numInfected; i++)
         {
-            infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 2.0f), Quaternion.identity));
+            infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 1.0f), Quaternion.identity));
             infectedList[i].gameObject.SendMessage("setStartingPosition");
             infectedList[i].gameObject.SendMessage("setInfectionRadius", this.infectionRadius);
             infectedList[i].gameObject.SendMessage("setInfectionChance", this.infectionChance);

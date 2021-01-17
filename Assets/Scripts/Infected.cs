@@ -59,6 +59,10 @@ public float fullRecoveryTime = 30.0f;
             {
                 GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);
                 obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
+                obj.gameObject.SendMessage("setOldPos", this.originalPosition);
+                obj.gameObject.SendMessage("setHub", this.inHub);
+                obj.gameObject.SendMessage("setOutHubTimer", this.enterHubTime);
+                obj.gameObject.SendMessage("setInHubTimer", this.timeInHub);
                 Destroy(this.gameObject);
             }   
         }
@@ -109,7 +113,7 @@ public float fullRecoveryTime = 30.0f;
         this.enterHubTime = i;
     }
 
-    public void setHub(double i)
+    public void setInHub(double i)
     {
         this.timeInHub = i;
     }

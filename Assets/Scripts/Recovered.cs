@@ -24,4 +24,24 @@ public class Recovered : Person
     }
 
     public void Infection(Infected inf) { }
+
+     public void setOldPos(Vector3 pos)
+    {
+	    this.originalPosition = pos;
+    }
+
+    public void setHub(bool inHub)
+    {
+        this.inHub = inHub;
+    }
+
+    public void setOutHubTimer(double i)
+    {
+        this.enterHubTime = i;
+    }
+
+    public void setInHub(double i)
+    {
+        this.timeInHub = i;
+    }
 }

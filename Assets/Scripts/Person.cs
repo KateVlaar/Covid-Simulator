@@ -8,9 +8,7 @@ using Random = UnityEngine.Random;
 public class Person : MonoBehaviour
 {
     public GameObject infected;
-
-    private bool isWearingMask = false;
-    private bool isVaccinated = false;
+    
     private double velocityChangeTime = 2.0f;
 
     protected double enterHubTime = 5.0f;

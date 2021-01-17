@@ -16,7 +16,6 @@ public class StartScript : MonoBehaviour
     /* Slider options */
     public int numInfected = 1;
     public int numSusceptible = 10;
-    public float percentWearingMasks = 0.0f;
     public float infectionRadius = 0.5f;
     public float infectionChance = 0.5f;
     private float recoveryTime = 10.0f;
@@ -31,8 +30,6 @@ public class StartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // TODO: Hookup wearing masks
-
         /* Setup all slider listeners and initialize the value to the slider's starting value */
         Slider susceptibleSlider = GameObject.Find("SusceptibleSlider").GetComponent<Slider>();
         susceptibleSlider.onValueChanged.AddListener(updateNumSusceptible);
@@ -42,12 +39,7 @@ public class StartScript : MonoBehaviour
         Slider infectedSlider = GameObject.Find("InfectedSlider").GetComponent<Slider>();
         infectedSlider.onValueChanged.AddListener(updateNumInfected);
         updateNumInfected(infectedSlider.value);
-        
-        /* Setup all slider listeners and initialize the value to the slider's starting value */
-        Slider percentWearingMasks = GameObject.Find("MaskSlider").GetComponent<Slider>();
-        percentWearingMasks.onValueChanged.AddListener(updatePercentWearingMasks);
-        updatePercentWearingMasks(percentWearingMasks.value);
-        
+
         /* Setup all slider listeners and initialize the value to the slider's starting value */
         Slider infectionRadius = GameObject.Find("InfectionRadiusSlider").GetComponent<Slider>();
         infectionRadius.onValueChanged.AddListener(updateInfectionRadius);
@@ -75,7 +67,6 @@ public class StartScript : MonoBehaviour
         Instantiate(hubA, new Vector3(2.11f, -2.36f, 1.96835f), Quaternion.identity);
         Instantiate(hubA, new Vector3(4.65f, -2.39f, 1.96835f), Quaternion.identity);
         Instantiate(hubA, new Vector3(7.16f, -2.43f, 1.96835f), Quaternion.identity);
-
     }
 
     private void spawnBackground()
@@ -87,7 +78,7 @@ public class StartScript : MonoBehaviour
     {
         for (int i = 0; i < numSusceptible; i++)
         {
-            Instantiate(susceptible, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(susceptible, new Vector3(0.0f, 0.0f, 2.0f), Quaternion.identity);
         }
     }
 
@@ -99,7 +90,7 @@ public class StartScript : MonoBehaviour
         List<GameObject> infectedList = new List<GameObject>();
         for (int i = 0; i < numInfected; i++)
         {
-            infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));
+            infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 2.0f), Quaternion.identity));
             infectedList[i].gameObject.SendMessage("setStartingPosition");
             infectedList[i].gameObject.SendMessage("setInfectionRadius", this.infectionRadius);
             infectedList[i].gameObject.SendMessage("setInfectionChance", this.infectionChance);
@@ -156,11 +147,6 @@ public class StartScript : MonoBehaviour
     public void updateNumInfected(float value)
     {
         this.numInfected = (int) value;
-    }
-
-    public void updatePercentWearingMasks(float value)
-    {
-        this.percentWearingMasks = value;
     }
 
     public void updateInfectionRadius(float value)

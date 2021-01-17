@@ -25,7 +25,7 @@ public class Counter : MonoBehaviour
             "\nNot Infected: " + sus;
             */
         double percentage = (double)rec / ((double)rec + (double)sus);
-        return System.String.Format("{0:0.00}% was infected", percentage*100);
+        return System.String.Format("{0:0.00}% were infected", percentage*100);
     }
 
 

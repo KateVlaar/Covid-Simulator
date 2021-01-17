@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 264323291171370079}
   - component: {fileID: 4607186071618518978}
   - component: {fileID: 5381269059444296793}
+  - component: {fileID: -6719928231640479829}
   m_Layer: 8
   m_Name: InfectedSprite
   m_TagString: Untagged
@@ -120,9 +121,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infected: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd, type: 3}
   rb: {fileID: 264323291171370072}
+  infectionRadius: 10
   infectionChance: 0.5
   infTimer: 0.5
-  recoveryTime: 14
+  fullRecoveryTime: 1.38
+  recoveryTime: 1
   recovered: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd,
     type: 3}
 --- !u!58 &4607186071618518978

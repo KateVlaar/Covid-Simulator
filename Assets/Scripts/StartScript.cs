@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartScript : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class StartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /* Setup all slider listeners and initialize the value to the slider's starting value */
+        Slider susceptibleSlider = GameObject.Find("SusceptibleSlider").GetComponent<Slider>();
+        susceptibleSlider.onValueChanged.AddListener(updateNumSusceptible);
+        updateNumSusceptible(susceptibleSlider.value);
     }
 
     private void spawnSusceptible()
@@ -45,6 +50,14 @@ public class StartScript : MonoBehaviour
             spawned = true;
             spawnSusceptible();
             spawnInfected();
+            /* Hide the starting text */
+            GameObject.Find("StartText").SetActive(false);
+            GameObject.Find("SliderCanvas").SetActive(false);
         }
+    }
+
+    public void updateNumSusceptible(float value)
+    {
+        this.numSusceptible = (int) value;
     }
 }

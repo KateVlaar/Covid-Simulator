@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Covid Simulator</title>
+    <title>Pandemic Simulator</title>
     <link rel="shortcut icon" href="demo/TemplateData/favicon.ico">
     <link rel="stylesheet" href="demo/TemplateData/style.css">
     <script src="demo/TemplateData/UnityProgress.js"></script>
     <script src="demo/Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "demo/Build/Build.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "demo/Build/demo.json", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -18,7 +18,7 @@
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Covid Simulator</div>
+        <div class="title">Pandemic Simulator</div>
       </div>
     </div>
   </body>

@@ -29,7 +29,8 @@ public class Infected : Person
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color
         m_SpriteRenderer.color = Color.red;
-        filter.NoFilter();
+        filter.useLayerMask = true;
+        filter.layerMask = 8;
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class Infected : Person
 				this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
 	            foreach(Collider2D person in inProximity)
 	            {
-	                person.gameObject.SendMessage("Infection", this);
+                    person.gameObject.SendMessage("Infection", this);
 	            }
 				infTimer = 0.5;
 			}

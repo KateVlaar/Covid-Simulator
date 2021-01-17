@@ -13,6 +13,11 @@ public class Person : MonoBehaviour
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
 
+    private double enterHubTime = 2.0f;
+    private double timeInHub = 3.0f;
+    private Boolean inHub = false;
+    private Vector3 originalPosition;
+
     private SpriteRenderer spriteRenderer = null;
     private float boundX = 0.0f;
     private float boundY = 0.0f;
@@ -71,6 +76,49 @@ public class Person : MonoBehaviour
             );
             this.chooseNewRandomDelay();
         }
+
+        enterHub();
+    }
+
+    public void enterHub()
+    {
+        GameObject hub = GameObject.Find("Hub"); // Will need this for each hub
+
+        float prob = Random.Range(0.0f, 1.0f);
+
+        if (inHub)
+        {
+            this.timeInHub -= Time.deltaTime;
+            if (this.timeInHub <= 0.0f)
+            {
+                if (prob <= 1.0f) // Guarantees they leave the hub - subject to change
+                {
+                    this.transform.position = this.originalPosition;
+                    this.inHub = false;
+                }
+                this.timeInHub = 3.0f;
+            }
+        } 
+        else
+        {
+            this.enterHubTime -= Time.deltaTime;
+            if (this.enterHubTime <= 0.0f)
+            {
+                this.originalPosition = this.transform.position;
+                if (prob <= 0.2f) // Probability they enter the hub - pretty high for testing
+                {
+                    SpriteRenderer hubSpriteRenderer = hub.GetComponent<SpriteRenderer>();
+                    float x = hubSpriteRenderer.bounds.extents.x;
+                    float y = hubSpriteRenderer.bounds.extents.y;
+                    Vector3 pos = hubSpriteRenderer.transform.position;
+
+                    /* Spawns sprites within the hub */
+                    this.transform.position = new Vector3(Random.Range(pos.x-x, pos.x+x), Random.Range(pos.y - y, pos.y + y));
+                    this.inHub = true;
+                }
+                this.enterHubTime = 2.0f;
+            }
+        }
     }
 
     public void Infection(Infected inf) 
@@ -87,5 +135,12 @@ public class Person : MonoBehaviour
             obj.gameObject.SendMessage("setRecoveryTime", inf.recoveryTime);
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
     }
 }

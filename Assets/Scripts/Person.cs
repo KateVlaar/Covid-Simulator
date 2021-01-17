@@ -78,7 +78,7 @@ public class Person : MonoBehaviour
         if(Random.Range(0f, 1f) < chance) {
             GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
-            // this.gameObject.AddComponent<Infected>();
+            obj.gameObject.SendMessage("setCanInfect", true);
             Destroy(this.gameObject);
         }
     }

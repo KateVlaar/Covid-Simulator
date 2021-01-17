@@ -22,7 +22,6 @@ public class Infected : Person
     // Start is called before the first frame update
     void Start() 
     {
-        base.Start();
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color
@@ -33,12 +32,13 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
+        base.Update();
+        
         /**
          * Only try to infect and tick down to recovery once canInfect is set
          */
         if (this.canInfect)
         {
-            base.Update();
             this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
             foreach(Collider2D person in inProximity)
             {
@@ -58,6 +58,14 @@ public class Infected : Person
     public void setCanInfect(bool canInfect)
     {
         this.canInfect = canInfect;
+    }
+
+    /**
+     * Only call base.Start() if we are spawning a new infected (not replacing a susceptible)
+     */
+    public void setStartingPosition()
+    {
+        base.Start();
     }
 
     public void Infection(double chance) {}

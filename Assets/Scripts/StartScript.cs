@@ -81,6 +81,7 @@ public class StartScript : MonoBehaviour
         for (int i = 0; i < numInfected; i++)
         {
             infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));
+            infectedList[i].gameObject.SendMessage("setStartingPosition");
         }
 
         return infectedList;
@@ -99,18 +100,21 @@ public class StartScript : MonoBehaviour
             GameObject.Find("SliderCanvas").SetActive(false);
         }
 
-        if (startTimer > 0)
+        if (spawned)
         {
-            startTimer -= Time.deltaTime;
-        }
-
-        if (startTimer < 0)
-        {
-            /* Signal to the infected that they can start infecting */
-            foreach (var infected in infectedList)
+            if (startTimer > 0)
             {
-                infected.gameObject.SendMessage("setCanInfect", true);
+                startTimer -= Time.deltaTime;
             }
+
+            if (startTimer < 0)
+            {
+                /* Signal to the infected that they can start infecting */
+                foreach (var infected in infectedList)
+                {
+                    infected.gameObject.SendMessage("setCanInfect", true);
+                }
+            }   
         }
     }
 

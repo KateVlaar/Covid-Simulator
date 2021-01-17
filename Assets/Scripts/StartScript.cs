@@ -8,6 +8,7 @@ public class StartScript : MonoBehaviour
 {
     public GameObject susceptible;
     public GameObject infected;
+    public GameObject hub;
     /* Slider options */
     public int numInfected = 1;
     public int numSusceptible = 10;
@@ -64,6 +65,11 @@ public class StartScript : MonoBehaviour
         updateRecoveryTime(recoveryTime.value);
     }
 
+    private void spawnHubs()
+    {
+        Instantiate(hub, new Vector3(-7, 3, 0), Quaternion.identity);
+    }
+
     private void spawnSusceptible()
     {
         for (int i = 0; i < numSusceptible; i++)
@@ -93,6 +99,7 @@ public class StartScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !spawned)
         {
             spawned = true;
+            spawnHubs();
             spawnSusceptible();
             infectedList = spawnInfected();
             /* Hide the starting text */
@@ -112,7 +119,10 @@ public class StartScript : MonoBehaviour
                 /* Signal to the infected that they can start infecting */
                 foreach (var infected in infectedList)
                 {
-                    infected.gameObject.SendMessage("setCanInfect", true);
+                    if (infected != null)
+                    {
+                        infected.gameObject.SendMessage("setCanInfect", true);
+                    }
                 }
             }   
         }

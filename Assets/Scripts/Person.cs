@@ -82,7 +82,7 @@ public class Person : MonoBehaviour
 
     public void enterHub()
     {
-        GameObject hub = GameObject.Find("Hub1"); // Will need this for each hub
+        GameObject hub = GameObject.Find("Hub"); // Will need this for each hub
 
         float prob = Random.Range(0.0f, 1.0f);
 

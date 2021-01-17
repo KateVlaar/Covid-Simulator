@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Hub : MonoBehaviour
 {
-    public GameObject hub1;
-
+    public GameObject hub;
     // Start is called before the first frame update
     void Start()
     {
-        hub1.name = "Hub1";
+        hub.name = "Hub";
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

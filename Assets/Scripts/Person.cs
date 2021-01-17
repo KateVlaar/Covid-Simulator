@@ -131,7 +131,7 @@ public class Person : MonoBehaviour
             /* Inherit all attributes from the infector */
             obj.gameObject.SendMessage("setInfectionRadius", inf.infectionRadius);
             obj.gameObject.SendMessage("setInfectionChance", inf.infectionChance);
-            obj.gameObject.SendMessage("setRecoveryTime", inf.recoveryTime);
+            obj.gameObject.SendMessage("setRecoveryTime", inf.fullRecoveryTime);
             Destroy(this.gameObject);
         }
     }

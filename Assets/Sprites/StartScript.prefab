@@ -137,9 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbdc80fb1538e342b5e4a78123a86dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 3651832493284961384, guid: 69eb72aa230c4d940b4c924b94878494, type: 3}
+  susceptible: {fileID: 3651832493284961384, guid: 69eb72aa230c4d940b4c924b94878494,
+    type: 3}
+  infected: {fileID: 3532786865566215028, guid: 90c6fd84c6099834c9f492d9069c9a8e,
+    type: 3}
   numInfected: 1
-  numSusceptible: 40
+  numSusceptible: 117
   numSusceptibleWithMasks: 0
   infectionRadius: 5
   infectionChance: 0.5

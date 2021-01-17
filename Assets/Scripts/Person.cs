@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Person : MonoBehaviour
 {
+    public GameObject infected;
+
     private bool isWearingMask = false;
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
@@ -57,7 +59,7 @@ public class Person : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         /* Update the velocity if necessary */
         this.velocityChangeTime -= Time.deltaTime;
@@ -74,8 +76,10 @@ public class Person : MonoBehaviour
     public void Infection(double chance) 
     {
         if(Random.Range(0f, 1f) < chance) {
-            this.gameObject.AddComponent<Infected>();
-            Destroy(this);
+            GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
+            obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
+            // this.gameObject.AddComponent<Infected>();
+            Destroy(this.gameObject);
         }
     }
 }

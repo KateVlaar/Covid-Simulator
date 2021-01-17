@@ -12,7 +12,7 @@ public class Infected : Person
 	
 	/* How often we check for infections in s */
 	public double infTimer = 0.5;
-public float fullRecoveryTime = 30.0f;
+    public float fullRecoveryTime = 30.0f;
     public float recoveryTime = 30.0f;
     public GameObject recovered;
     
@@ -92,6 +92,7 @@ public float fullRecoveryTime = 30.0f;
     public void setRecoveryTime(float recoveryTime)
     {
 	    this.recoveryTime = recoveryTime;
+        this.fullRecoveryTime = recoveryTime;
     }
 
     public void setOldPos(Vector3 pos)

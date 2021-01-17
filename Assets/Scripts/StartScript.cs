@@ -81,6 +81,7 @@ public class StartScript : MonoBehaviour
         for (int i = 0; i < numInfected; i++)
         {
             infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));
+            infectedList[i].gameObject.SendMessage("setStartingPosition");
         }
 
         return infectedList;

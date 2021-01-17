@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infected: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd, type: 3}
   rb: {fileID: 264323291171370072}
-  timeLeft: 9
+  recoveryTime: 10
   recovered: {fileID: 177070133556661495, guid: bb1b886df3ff671418ce54e71e45b6cd,
     type: 3}
 --- !u!58 &5381269059444296793

@@ -59,7 +59,6 @@ public class StartScript : MonoBehaviour
     private void spawnHubs()
     {
         Instantiate(hubB, new Vector3(-6.739f, 2.728f, 1.96835f), Quaternion.identity);
-        Instantiate(hubC, new Vector3(-3.5f, 2.65f, 1.96835f), Quaternion.identity);
         Instantiate(hubB, new Vector3(4.33f, 2.76f, 1.96835f), Quaternion.identity);
         Instantiate(hubA, new Vector3(7.16f, 2.46f, 1.96835f), Quaternion.identity);
         Instantiate(hubC, new Vector3(-6.49f, -2.17f, 1.96835f), Quaternion.identity);

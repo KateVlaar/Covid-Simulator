@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Infected : Person
 {
-    private double infectionRadius = 10.0;
+    public double infectionRadius = 10.0;
     /* Chance out of 0.5 that a susceptible person inside of the infection radius will be infected on each tick */
-    private double infectionChance = 1;
+    public double infectionChance = 0.1;
+
+    public double infTimer = 0.5;
 
     SpriteRenderer m_SpriteRenderer;
     ContactFilter2D filter = new ContactFilter2D();
@@ -25,13 +27,19 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
-        base.Update();
-        this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
-        foreach(Collider2D person in inProximity)
+        this.infTimer -= Time.deltaTime;
+        if(infTimer < 0) 
         {
-            person.gameObject.SendMessage("Infection", infectionChance);
+            this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
+            foreach(Collider2D person in inProximity)
+            {
+                person.gameObject.SendMessage("Infection", this);
+            }
+            infTimer = 0.5;
         }
+        base.Update();
+        
     }
 
-    public void Infection(double chance) {}
+    public void Infection(Infected inf) {}
 }

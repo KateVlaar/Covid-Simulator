@@ -14,9 +14,9 @@ public class Person : MonoBehaviour
     private double velocityChangeTime = 2.0f;
 
     protected double enterHubTime = 5.0f;
-    protected double timeInHub = 1.0f;
-    protected Boolean inHub = false;
-    protected Boolean inTransit = false;
+    protected double timeInHub = 0.5f;
+    public Boolean inHub = false;
+    public Boolean inTransit = false;
     protected Vector3 originalPosition;
 
     private SpriteRenderer spriteRenderer = null;
@@ -71,19 +71,21 @@ public class Person : MonoBehaviour
         {
             if(this.inHub) {
                 rb.velocity = Vector3.Normalize(this.originalPosition - this.transform.position);
-                if(Vector3.Distance(this.originalPosition, this.transform.position) < 0.4) {
+                if(Vector3.Distance(this.originalPosition, this.transform.position) < 0.3) {
                     this.inHub = false;
                     this.inTransit = false;
                     rb.velocity = new Vector3();
+                    this.velocityChangeTime = 0.2;
                 }
             } else {
                 GameObject hub = GameObject.Find("Hub");
                 Vector3 pos = hub.GetComponent<SpriteRenderer>().transform.position;
                 rb.velocity = Vector3.Normalize(pos - this.transform.position);
-                if(Vector3.Distance(pos, this.transform.position) < 0.4) {
+                if(Vector3.Distance(pos, this.transform.position) < 2) {
                     this.inHub = true;
                     this.inTransit = false;
                     rb.velocity = new Vector3();
+                    this.velocityChangeTime = 0.2;
                 }
             }
             return;
@@ -118,7 +120,7 @@ public class Person : MonoBehaviour
                     //this.transform.position = this.originalPosition;
                     this.inTransit = true;
                 }
-                this.timeInHub = 1.0f;
+                this.timeInHub = 0.5f;
             }
         } 
         else
@@ -159,6 +161,7 @@ public class Person : MonoBehaviour
             obj.gameObject.SendMessage("setHub", this.inHub);
             obj.gameObject.SendMessage("setOutHubTimer", this.enterHubTime);
             obj.gameObject.SendMessage("setInHubTimer", this.timeInHub);
+            obj.gameObject.SendMessage("setInTransit", this.inTransit);
             Destroy(this.gameObject);
         }
     }

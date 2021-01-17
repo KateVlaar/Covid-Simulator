@@ -119,5 +119,10 @@ public class Infected : Person
         this.timeInHub = i;
     }
 
+    public void setInTransit(bool inT)
+    {
+        this.inTransit = inT;
+    }
+
     public void Infection(Infected inf) {}
 }

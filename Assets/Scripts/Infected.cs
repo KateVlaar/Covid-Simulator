@@ -29,7 +29,7 @@ public class Infected : Person
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color
         m_SpriteRenderer.color = Color.red;
-        filter.NoFilter();
+        filter.SetLayerMask(LayerMask.GetMask("People"));
     }
 
     // Update is called once per frame
@@ -78,7 +78,8 @@ public class Infected : Person
 
     public void setInfectionRadius(float radius)
     {
-	    this.infectionRadius = radius;
+	    this.GetComponent<CircleCollider2D>().radius = radius;
+        this.GetComponent<Light>().range = radius*2;
     }
 
     public void setInfectionChance(float chance)

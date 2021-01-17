@@ -934,6 +934,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
         type: 3}
+      propertyPath: hub
+      value: 
+      objectReference: {fileID: 6738003305909982433, guid: 607831d679a33cf4eac0ad4a1e87fa53,
+        type: 3}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
       propertyPath: infectionChance
       value: 0.5
       objectReference: {fileID: 0}

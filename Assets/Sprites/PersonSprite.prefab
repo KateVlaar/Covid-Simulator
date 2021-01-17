@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3651832493284961385}
   - component: {fileID: 9182956804289488911}
   - component: {fileID: 5050083962108301126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PersonSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

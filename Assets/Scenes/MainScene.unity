@@ -940,6 +940,30 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
         type: 3}
+      propertyPath: hubA
+      value: 
+      objectReference: {fileID: 6738003305909982433, guid: 607831d679a33cf4eac0ad4a1e87fa53,
+        type: 3}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
+      propertyPath: hubB
+      value: 
+      objectReference: {fileID: 8888803617901164050, guid: 2ac1768a3d89e4c4597cf9da328bc8a6,
+        type: 3}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
+      propertyPath: hubC
+      value: 
+      objectReference: {fileID: 1387988926937118703, guid: 58498be78a9a8904bba3742e99bdcb59,
+        type: 3}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 471507305343249257, guid: 2547bf17d195ac849b6b5d6cb4d7ff40,
+        type: 3}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
       propertyPath: infectionChance
       value: 0.5
       objectReference: {fileID: 0}
@@ -3998,6 +4022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111074591044587940, guid: b9f6aa939cc302446bdca44fe5d6eb5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f6aa939cc302446bdca44fe5d6eb5b, type: 3}

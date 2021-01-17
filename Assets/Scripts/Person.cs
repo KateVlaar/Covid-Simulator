@@ -70,8 +70,8 @@ public class Person : MonoBehaviour
             if(this.inHub) {
                 rb.velocity = Vector3.Normalize(this.originalPosition - this.transform.position);
                 rb.velocity += new Vector2(
-                    Random.Range(-0.2f, 0.2f),
-                    Random.Range(-0.2f, 0.2f)
+                    Random.Range(-0.5f, 0.5f),
+                    Random.Range(-0.5f, 0.5f)
                 );
                 if(Vector3.Distance(this.originalPosition, this.transform.position) < 0.3) {
                     this.inHub = false;
@@ -83,6 +83,10 @@ public class Person : MonoBehaviour
                 GameObject hub = GameObject.Find("Hub");
                 Vector3 pos = hub.GetComponent<SpriteRenderer>().transform.position;
                 rb.velocity = Vector3.Normalize(pos - this.transform.position);
+                rb.velocity += new Vector2(
+                    Random.Range(-0.5f, 0.5f),
+                    Random.Range(-0.5f, 0.5f)
+                );
                 if(Vector3.Distance(pos, this.transform.position) < 1.7) {
                     this.inHub = true;
                     this.inTransit = false;

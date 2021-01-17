@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 264323291171370079}
   - component: {fileID: 4607186071618518978}
   - component: {fileID: 5381269059444296793}
+  - component: {fileID: -6802831656332599214}
   m_Layer: 0
   m_Name: InfectedSprite
   m_TagString: Untagged
@@ -141,7 +142,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!58 &5381269059444296793
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,3 +159,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!122 &-6802831656332599214
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3532786865566215028}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 0.75

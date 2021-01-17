@@ -98,9 +98,13 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.7855151, y: -1.6534836}
-  - {x: -0.42352423, y: -1.6554096}
-  - {x: 1.4106871, y: -1.6580033}
+  - {x: -4.070874, y: -1.5526462}
+  - {x: -4.106152, y: -1.44825}
+  - {x: -1.7107271, y: 1.1941324}
+  - {x: 1.4689802, y: 1.2025172}
+  - {x: 3.610574, y: -1.4853337}
+  - {x: 3.609463, y: -1.5881841}
+  - {x: 3.628829, y: -1.4899404}
 --- !u!1 &5555260195776833988
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,8 +203,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.8106672, y: 1.2744038}
-  - {x: -1.806895, y: -1.9344149}
+  - {x: 0.3745445, y: 1.5172367}
+  - {x: 0.3297565, y: -4.82412}
 --- !u!1 &6399669693855702579
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,8 +303,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.8106672, y: 1.2744038}
-  - {x: -1.806895, y: -1.9344149}
+  - {x: -4.092999, y: 1.3229713}
+  - {x: -4.1135063, y: -4.848404}
 --- !u!1 &6738003305909982433
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 6738003305909982433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.03, y: 0.01, z: 1.96835}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1.5451614, y: 1.5451614, z: 0.3090323}
   m_Children:
   - {fileID: 3151509766837713212}
   - {fileID: 8051410132450838962}
@@ -376,7 +380,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a94adaf94669646788de8f639270804a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e34f46576eb1e4320b39165bb67ebbfc, type: 3}
   m_Color: {r: 0.7713442, g: 0.8396226, b: 0.23366857, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -498,6 +502,6 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.7855151, y: -1.6534836}
-  - {x: -0.42352423, y: -1.6554096}
-  - {x: 1.4106871, y: -1.6580033}
+  - {x: -4.0678463, y: -4.591756}
+  - {x: -0.13216162, y: -4.5936823}
+  - {x: 3.5958986, y: -4.596276}

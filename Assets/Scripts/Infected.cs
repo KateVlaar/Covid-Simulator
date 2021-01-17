@@ -7,14 +7,18 @@ public class Infected : Person
     private double infectionRadius = 10.0;
     /* Chance out of 0.5 that a susceptible person inside of the infection radius will be infected on each tick */
     private double infectionChance = 1;
+    /* Flags if we can infect or not */
+    private bool canInfect = false;
 
     public float recoveryTime = 30.0f;
     public GameObject recovered;
+    
+    private float startCooldown = 2.0f;
 
     SpriteRenderer m_SpriteRenderer;
     ContactFilter2D filter = new ContactFilter2D();
     List<Collider2D> inProximity = new List<Collider2D>();
-    
+
     // Start is called before the first frame update
     void Start() 
     {
@@ -28,21 +32,31 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
-        base.Update();
-        this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
-        foreach(Collider2D person in inProximity)
+        /**
+         * Only try to infect and tick down to recovery once canInfect is set
+         */
+        if (this.canInfect)
         {
-            person.gameObject.SendMessage("Infection", infectionChance);
-        }
+            base.Update();
+            this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
+            foreach(Collider2D person in inProximity)
+            {
+                person.gameObject.SendMessage("Infection", infectionChance);
+            }
 
-        recoveryTime -= Time.deltaTime;
-        if (recoveryTime < 0)
-        {
-            GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);
-            obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
-            Destroy(this.gameObject);
+            recoveryTime -= Time.deltaTime;
+            if (recoveryTime < 0)
+            {
+                GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);
+                obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
+                Destroy(this.gameObject);
+            }   
         }
+    }
 
+    public void setCanInfect(bool canInfect)
+    {
+        this.canInfect = canInfect;
     }
 
     public void Infection(double chance) {}

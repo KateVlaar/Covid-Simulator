@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,12 @@ public class StartScript : MonoBehaviour
     private float recoveryTime = 10.0f;
 
     private bool spawned = false;
+    
+    /* List of all infected clones */
+    private List<GameObject> infectedList = new List<GameObject>();
+    // Wait 2s before infecting
+    private float startTimer = 2.0f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -65,12 +72,18 @@ public class StartScript : MonoBehaviour
         }
     }
 
-    private void spawnInfected()
+    /**
+     * Spawns the infected and returns a list of infected
+     */
+    private List<GameObject> spawnInfected()
     {
+        List<GameObject> infectedList = new List<GameObject>();
         for (int i = 0; i < numInfected; i++)
         {
-            Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            infectedList.Add(Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));
         }
+
+        return infectedList;
     }
 
     // Update is called once per frame
@@ -80,10 +93,24 @@ public class StartScript : MonoBehaviour
         {
             spawned = true;
             spawnSusceptible();
-            spawnInfected();
+            infectedList = spawnInfected();
             /* Hide the starting text */
             GameObject.Find("StartText").SetActive(false);
             GameObject.Find("SliderCanvas").SetActive(false);
+        }
+
+        if (startTimer > 0)
+        {
+            startTimer -= Time.deltaTime;
+        }
+
+        if (startTimer < 0)
+        {
+            /* Signal to the infected that they can start infecting */
+            foreach (var infected in infectedList)
+            {
+                infected.gameObject.SendMessage("setCanInfect", true);
+            }
         }
     }
 

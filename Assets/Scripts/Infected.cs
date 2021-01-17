@@ -30,7 +30,8 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
-        this.infTimer -= Time.deltaTime;
+        float delta = Time.deltaTime;
+        this.infTimer -= delta;
         if(infTimer < 0) 
         {
             this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
@@ -42,7 +43,7 @@ public class Infected : Person
         }
         base.Update();
 
-        recoveryTime -= Time.deltaTime;
+        recoveryTime -= delta;
         if (recoveryTime < 0)
         {
             GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);

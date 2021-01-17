@@ -75,7 +75,7 @@ public class Person : MonoBehaviour
 
     public void Infection(Infected inf) 
     {
-        double distFactor = Math.Pow(20, Vector3.Distance(this.transform.position, inf.transform.position));
+        double distFactor = Math.Pow(20, -Vector3.Distance(this.transform.position, inf.transform.position));
         if(Random.Range(0f, 1f) < inf.infectionChance*distFactor) {
             GameObject obj = (GameObject)Instantiate(infected, this.transform.position, Quaternion.identity);
             obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;

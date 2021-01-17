@@ -20,7 +20,7 @@ public class Person : MonoBehaviour
     public Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         setBoundaries();
         setStartingPosition();
@@ -59,7 +59,7 @@ public class Person : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    protected void Update()
     {
         /* Update the velocity if necessary */
         this.velocityChangeTime -= Time.deltaTime;

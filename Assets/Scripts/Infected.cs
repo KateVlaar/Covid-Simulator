@@ -22,6 +22,7 @@ public class Infected : Person
     // Start is called before the first frame update
     void Start() 
     {
+        base.Start();
         //Fetch the SpriteRenderer from the GameObject
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         //Set the GameObject's Color quickly to a set Color

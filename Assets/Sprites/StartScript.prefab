@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7244079067435878461}
   - component: {fileID: 5533775842812843935}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: StartScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbdc80fb1538e342b5e4a78123a86dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 3651832493284961384, guid: 69eb72aa230c4d940b4c924b94878494, type: 3}
-  numberOfPeople: 129
+  susceptible: {fileID: 3651832493284961384, guid: 69eb72aa230c4d940b4c924b94878494,
+    type: 3}
+  infected: {fileID: 3532786865566215028, guid: 90c6fd84c6099834c9f492d9069c9a8e,
+    type: 3}
+  numInfected: 1
+  numSusceptible: 117
+  numSusceptibleWithMasks: 0
+  infectionRadius: 5
+  infectionChance: 0.5

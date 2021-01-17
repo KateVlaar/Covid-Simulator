@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StartScript : MonoBehaviour
 {
-    public GameObject obj;
+    public GameObject susceptible;
+    public GameObject infected;
     /* Slider options */
     public int numInfected = 1;
     public int numSusceptible = 10;
@@ -23,16 +24,16 @@ public class StartScript : MonoBehaviour
         for (int i = 0; i < numSusceptible; i++)
         {
             // TODO: Replace obj with susceptible object
-            Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(susceptible, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
     }
 
     private void spawnInfected()
     {
-        for (int i = 0; i < numSusceptible; i++)
+        for (int i = 0; i < numInfected; i++)
         {
             // TODO: Replace obj with infected object
-            Instantiate(obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(infected, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
     }
 

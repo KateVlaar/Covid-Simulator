@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd82cac16c408647bc6dca0da54a761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infected: {fileID: 3532786865566215028, guid: 90c6fd84c6099834c9f492d9069c9a8e,
+    type: 3}
   rb: {fileID: 9182956804289488911}
 --- !u!50 &9182956804289488911
 Rigidbody2D:

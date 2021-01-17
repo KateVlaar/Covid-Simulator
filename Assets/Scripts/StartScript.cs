@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class StartScript : MonoBehaviour
 {
+    public GameObject background;
     public GameObject susceptible;
     public GameObject infected;
-    public GameObject hub;
+    public GameObject hubA;
+    public GameObject hubB;
+    public GameObject hubC;
+
     /* Slider options */
     public int numInfected = 1;
     public int numSusceptible = 10;
@@ -45,11 +49,10 @@ public class StartScript : MonoBehaviour
         updatePercentWearingMasks(percentWearingMasks.value);
         
         /* Setup all slider listeners and initialize the value to the slider's starting value */
-        // TODO: Visualize this :)
         Slider infectionRadius = GameObject.Find("InfectionRadiusSlider").GetComponent<Slider>();
         infectionRadius.onValueChanged.AddListener(updateInfectionRadius);
         updateInfectionRadius(infectionRadius.value);
-        
+
         /* Setup all slider listeners and initialize the value to the slider's starting value */
         Slider infectionChance = GameObject.Find("InfectionChanceSlider").GetComponent<Slider>();
         infectionChance.onValueChanged.AddListener(updateInfectionChance);
@@ -63,7 +66,21 @@ public class StartScript : MonoBehaviour
 
     private void spawnHubs()
     {
-        Instantiate(hub, new Vector3(-7, 3, 0), Quaternion.identity);
+        Instantiate(hubB, new Vector3(-6.739f, 2.728f, 1.96835f), Quaternion.identity);
+        Instantiate(hubC, new Vector3(-3.5f, 2.65f, 1.96835f), Quaternion.identity);
+        Instantiate(hubB, new Vector3(4.33f, 2.76f, 1.96835f), Quaternion.identity);
+        Instantiate(hubA, new Vector3(7.16f, 2.46f, 1.96835f), Quaternion.identity);
+        Instantiate(hubC, new Vector3(-6.49f, -2.17f, 1.96835f), Quaternion.identity);
+        Instantiate(hubA, new Vector3(-0.51f, -2.39f, 1.96835f), Quaternion.identity);
+        Instantiate(hubA, new Vector3(2.11f, -2.36f, 1.96835f), Quaternion.identity);
+        Instantiate(hubA, new Vector3(4.65f, -2.39f, 1.96835f), Quaternion.identity);
+        Instantiate(hubA, new Vector3(7.16f, -2.43f, 1.96835f), Quaternion.identity);
+
+    }
+
+    private void spawnBackground()
+    {
+        Instantiate(background, new Vector3(-1.002354f, -0.113327f, 1.513513f), Quaternion.identity);
     }
 
     private void spawnSusceptible()
@@ -98,6 +115,7 @@ public class StartScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !spawned)
         {
             spawned = true;
+            spawnBackground();
             spawnHubs();
             spawnSusceptible();
             infectedList = spawnInfected();
@@ -148,6 +166,8 @@ public class StartScript : MonoBehaviour
     public void updateInfectionRadius(float value)
     {
         this.infectionRadius = value;
+        /* Update the radius vizualization in the main menu */
+        GameObject.Find("SampleInfected").SendMessage("setInfectionRadius", value);
     }
 
     public void updateInfectionChance(float value)

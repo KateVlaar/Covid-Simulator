@@ -13,7 +13,7 @@ public class Person : MonoBehaviour
     private bool isVaccinated = false;
     private double velocityChangeTime = 2.0f;
 
-    protected double enterHubTime = 2.0f;
+    protected double enterHubTime = 5.0f;
     protected double timeInHub = 1.0f;
     protected Boolean inHub = false;
     protected Boolean inTransit = false;
@@ -127,7 +127,7 @@ public class Person : MonoBehaviour
             if (this.enterHubTime <= 0.0f)
             {
                 this.originalPosition = this.transform.position;
-                if (prob <= 0.2f) // Probability they enter the hub 
+                if (prob <= 0.1f) // Probability they enter the hub - pretty high for testing
                 {
                     SpriteRenderer hubSpriteRenderer = hub.GetComponent<SpriteRenderer>();
                     float x = hubSpriteRenderer.bounds.extents.x;
@@ -139,7 +139,7 @@ public class Person : MonoBehaviour
                     //this.inHub = true;
                     this.inTransit = true;
                 }
-                this.enterHubTime = 2.0f;
+                this.enterHubTime = 5.0f;
             }
         }
     }

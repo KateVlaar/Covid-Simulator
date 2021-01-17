@@ -33,12 +33,13 @@ public class Infected : Person
     // Update is called once per frame
     void Update()
     {
+        base.Update();
+        
         /**
          * Only try to infect and tick down to recovery once canInfect is set
          */
         if (this.canInfect)
         {
-            base.Update();
             this.GetComponent<Collider2D>().OverlapCollider(filter, inProximity);
             foreach(Collider2D person in inProximity)
             {

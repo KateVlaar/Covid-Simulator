@@ -99,18 +99,21 @@ public class StartScript : MonoBehaviour
             GameObject.Find("SliderCanvas").SetActive(false);
         }
 
-        if (startTimer > 0)
+        if (spawned)
         {
-            startTimer -= Time.deltaTime;
-        }
-
-        if (startTimer < 0)
-        {
-            /* Signal to the infected that they can start infecting */
-            foreach (var infected in infectedList)
+            if (startTimer > 0)
             {
-                infected.gameObject.SendMessage("setCanInfect", true);
+                startTimer -= Time.deltaTime;
             }
+
+            if (startTimer < 0)
+            {
+                /* Signal to the infected that they can start infecting */
+                foreach (var infected in infectedList)
+                {
+                    infected.gameObject.SendMessage("setCanInfect", true);
+                }
+            }   
         }
     }
 

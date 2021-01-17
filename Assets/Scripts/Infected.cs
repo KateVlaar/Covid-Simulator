@@ -10,6 +10,9 @@ public class Infected : Person
 
     public double infTimer = 0.5;
 
+    public float recoveryTime = 30.0f;
+    public GameObject recovered;
+
     SpriteRenderer m_SpriteRenderer;
     ContactFilter2D filter = new ContactFilter2D();
     List<Collider2D> inProximity = new List<Collider2D>();
@@ -38,7 +41,14 @@ public class Infected : Person
             infTimer = 0.5;
         }
         base.Update();
-        
+
+        recoveryTime -= Time.deltaTime;
+        if (recoveryTime < 0)
+        {
+            GameObject obj = (GameObject)Instantiate(recovered, this.transform.position, Quaternion.identity);
+            obj.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity;
+            Destroy(this.gameObject);
+        }
     }
 
     public void Infection(Infected inf) {}

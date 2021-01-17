@@ -136,7 +136,12 @@ PrefabInstance:
     - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
         type: 3}
       propertyPath: numSusceptible
-      value: 40
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533775842812843935, guid: 7bfdb5c8e6240fa429a650f5bf464051,
+        type: 3}
+      propertyPath: infectionChance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7244079067435878461, guid: 7bfdb5c8e6240fa429a650f5bf464051,
         type: 3}
